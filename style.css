@@ -11,3 +11,12 @@ body{
     background-color: #F6F6F6;
 }
 
+.main-banner{
+    margin: 0 auto;
+    width: 860px;
+    height: 484px;
+    overflow: hidden;
+    position: relative;
+
+    background-color: #000000;
+}
