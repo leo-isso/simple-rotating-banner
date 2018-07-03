@@ -1,5 +1,5 @@
 /*
- * Normalizing
+* Normalizing
 */
 
 *{
@@ -19,4 +19,30 @@ body{
     position: relative;
 
     background-color: #000000;
+}
+
+.image-banner {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: all ease-in-out 500ms;
+    -webkit-transition: all ease-in-out 500ms;
+    -moz-transition: all ease-in-out 500ms;
+    -o-transition: all ease-in-out 500ms;
+}
+
+.main-banner #image-3{
+    background-image: url('images/image-3.jpg');
+}
+.main-banner #image-2{
+    background-image: url('images/image-2.jpg');
+}
+.main-banner #image-1{
+    background-image: url('images/image-1.jpg');
 }
