@@ -50,6 +50,22 @@ function generateBannerImageOffsets(array, banner_width) {
     return offset_list;
 }
 
+function setStartingOffset() {
+
+    var image_list = banner_image_list;
+    var offset_list = generateBannerImageOffsets();
+
+    for (var index = 0; index < image_list.length; index++) {
+        
+        var current_image = image_list[index];
+        var current_offset = offset_list[index];
+
+        current_image.style.right = current_offset;
+
+    }
+
+}
+
 /**
  * OLD BANNER
  */
