@@ -1,4 +1,4 @@
-// Rotating Banner Variables
+// Rotating Banner Variables Dict
 var banner = {
     'id': 'main-banner',
     'image': {
