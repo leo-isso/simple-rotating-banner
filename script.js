@@ -1,14 +1,60 @@
+// Rotating Banner Props
 var banner_status = 1;
 var banner_timer_seconds = 4;
 var banner_timer = banner_timer_seconds * 1000;
 
+// Banner Elemment Props
+var banner_width = document.getElementById('main-banner').offsetWidth;
+var banner_height = document.getElementById('main-banner').offsetHeight;
+
+// Transform a HTMLCollction to an Array
+var banner_image_list = Array.prototype.slice.call(document.getElementsByClassName('image-banner'));
+
+
+function fistToLastIndex(array) {
+    // This function takes the first item from an array
+    // and pushes it into the last index.
+
+    var first_index = array.shift();
+    array.push(first_index);
+
+    return array;
+
+}
+
+function generateBannerImageOffsets(array, banner_width) {
+    // This function loops through an array and for
+    // each item of the array, adds the banner width
+    // to the list that is going to be returned.
+    // The starting offset is -(banner_width), because
+    // the current rotating image is going to hide to
+    // the banner's left.
+    
+    var offset_list = [];
+    var current_offset = -banner_width;
+
+    for (var image = 0; image < array.length; image++) {
+        // var curr_offset = array[image];
+        current_offset += banner_width;
+        offset_list.push(current_offset);
+    }
+
+    return offset_list;
+}
+
+/**
+ * OLD BANNER
+ */
 window.onload = function() {
     bannerLoop();
 };
 
+
 var banner_interval = setInterval(function() {
     bannerLoop();
 }, banner_timer);
+
+
 
 function bannerLoop() {
     
