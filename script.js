@@ -1,14 +1,18 @@
+// Rotating Banner Variables
+var banner_id = 'main-banner';
+var banner_image_class = 'image-banner';
+
 // Rotating Banner Props
 var banner_status = 1;
 var banner_timer_seconds = 4;
 var banner_timer = banner_timer_seconds * 1000;
 
 // Banner Elemment Props
-var banner_width = document.getElementById('main-banner').offsetWidth;
-var banner_height = document.getElementById('main-banner').offsetHeight;
+var banner_width = document.getElementById(banner_id).offsetWidth;
+var banner_height = document.getElementById(banner_id).offsetHeight;
 
 // Transform a HTMLCollction to an Array
-var banner_image_list = Array.prototype.slice.call(document.getElementsByClassName('image-banner'));
+var banner_image_list = Array.prototype.slice.call(document.getElementsByClassName(banner_image_class));
 
 
 function fistToLastIndex(array) {
