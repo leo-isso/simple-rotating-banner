@@ -2,7 +2,8 @@
 var banner = {
     'id': 'main-banner',
     'image': {
-        'class_name': 'image-banner'
+        'class_name': 'image-banner',
+        'image_unit': 'px'
     }
 };
 
@@ -42,9 +43,8 @@ function generateBannerImageOffsets(array, banner_width) {
     var current_offset = -banner_width;
 
     for (var image = 0; image < array.length; image++) {
-        // var curr_offset = array[image];
-        current_offset += banner_width;
         offset_list.push(current_offset);
+        current_offset += banner_width;
     }
 
     return offset_list;
@@ -53,14 +53,13 @@ function generateBannerImageOffsets(array, banner_width) {
 function setStartingOffset() {
 
     var image_list = banner_image_list;
-    var offset_list = generateBannerImageOffsets();
+    var offset_list = generateBannerImageOffsets(banner_image_list, banner_width);
 
     for (var index = 0; index < image_list.length; index++) {
         
         var current_image = image_list[index];
         var current_offset = offset_list[index];
-
-        current_image.style.right = current_offset;
+        current_image.style.right = current_offset + banner.image.image_unit;
 
     }
 
