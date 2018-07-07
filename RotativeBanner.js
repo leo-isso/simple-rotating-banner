@@ -1,14 +1,41 @@
-// Rotating Banner Variables Dict
-var banner = {
-    'id': 'main-banner',
-    'image': {
-        'class_name': 'image-banner',
-        'image_unit': 'px'
-    }
+
+var Banner = function(params) {
+
+    this.id = params.id;
+
+    this.width = document.getElementById(banner.id).offsetWidth;
+    this.height = document.getElementById(banner.id).offsetHeight;
+
+    this.rotation_time = 4000; //ms
+
+    this.image = {
+        class_name: params.image.class_name,
+        image_unit: params.image.image_unit
+    };
+
 };
 
+Banner.prototype = {
+
+    getBannerImageList: function() {
+        
+        // Transform a HTMLCollction to an Array
+        return Array.prototype.slice.call(document.getElementsByClassName(this.image.class_name));
+
+    }
+
+};
+
+// Rotating Banner Variables Dict
+// var banner = {
+//     'id': 'main-banner',
+//     'image': {
+//         'class_name': 'image-banner',
+//         'image_unit': 'px'
+//     }
+// };
+
 // Rotating Banner Props
-var banner_status = 1;
 var banner_timer_seconds = 4;
 var banner_timer = banner_timer_seconds * 1000;
 
@@ -23,9 +50,9 @@ var banner_image_list = Array.prototype.slice.call(document.getElementsByClassNa
 var offset_list = generateBannerImageOffsets(banner_image_list, banner_width);
 
 
-var banner_interval = setInterval(function() {
-    rotateBanner(banner_image_list);
-}, banner_timer);
+// var banner_interval = setInterval(function() {
+//     rotateBanner(banner_image_list);
+// }, banner_timer);
 
 function fistToLastIndex(array) {
     // This function takes the first item from an array
