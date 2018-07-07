@@ -5,12 +5,14 @@ var RotativeBanner = function(params) {
 
     this.width = document.getElementById(this.id).offsetWidth;
     this.height = document.getElementById(this.id).offsetHeight;
+    this.offset_list = params.offset_list;
 
     this.rotation_time = params.rotation_time; //ms
 
     this.image = {
         class_name: params.image.class_name,
-        image_unit: params.image.image_unit
+        image_unit: params.image.image_unit,
+        list: params.image.list,
     };
 
 };
@@ -19,8 +21,8 @@ RotativeBanner.prototype = {
 
     getBannerImageList: function() {
         // Transform a HTMLCollction to an Array
-
-        return Array.prototype.slice.call(document.getElementsByClassName(this.image.class_name));
+        this.image.list = Array.prototype.slice.call(document.getElementsByClassName(this.image.class_name));
+        return this.image.list;
 
     },
 
@@ -50,8 +52,10 @@ RotativeBanner.prototype = {
             offset_list.push(current_offset);
             current_offset += this.width;
         }
-    
-        return offset_list;
+        
+        this.offset_list = offset_list;
+        
+        return this.offset_list;
 
     },
 
