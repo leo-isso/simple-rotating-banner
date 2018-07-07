@@ -1,10 +1,10 @@
 
-var Banner = function(params) {
+var RotativeBanner = function(params) {
 
     this.id = params.id;
 
-    this.width = document.getElementById(banner.id).offsetWidth;
-    this.height = document.getElementById(banner.id).offsetHeight;
+    this.width = document.getElementById(this.id).offsetWidth;
+    this.height = document.getElementById(this.id).offsetHeight;
 
     this.rotation_time = params.rotation_time; //ms
 
@@ -15,7 +15,7 @@ var Banner = function(params) {
 
 };
 
-Banner.prototype = {
+RotativeBanner.prototype = {
 
     getBannerImageList: function() {
         // Transform a HTMLCollction to an Array
