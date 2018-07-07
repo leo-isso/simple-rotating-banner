@@ -26,28 +26,8 @@ Banner.prototype = {
 
 };
 
-// Rotating Banner Variables Dict
-// var banner = {
-//     'id': 'main-banner',
-//     'image': {
-//         'class_name': 'image-banner',
-//         'image_unit': 'px'
-//     }
-// };
-
-// Rotating Banner Props
-var banner_timer_seconds = 4;
-var banner_timer = banner_timer_seconds * 1000;
-
-// Banner Elemment Props
-var banner_width = document.getElementById(banner.id).offsetWidth;
-var banner_height = document.getElementById(banner.id).offsetHeight;
-
-// Transform a HTMLCollction to an Array
-var banner_image_list = Array.prototype.slice.call(document.getElementsByClassName(banner.image.class_name));
-
 // Images Offset List
-var offset_list = generateBannerImageOffsets(banner_image_list, banner_width);
+var offset_list = generateBannerImageOffsets(banner_image_list, this.width);
 
 
 // var banner_interval = setInterval(function() {
@@ -65,20 +45,20 @@ function fistToLastIndex(array) {
 
 }
 
-function generateBannerImageOffsets(array, banner_width) {
+function generateBannerImageOffsets(array, this.width) {
     // This function loops through an array and for
     // each item of the array, adds the banner width
     // to the list that is going to be returned.
-    // The starting offset is -(banner_width), because
+    // The starting offset is -(this.width), because
     // the current rotating image is going to hide to
     // the banner's left.
     
     var offset_list = [];
-    var current_offset = -banner_width;
+    var current_offset = -this.width;
 
     for (var image = 0; image < array.length; image++) {
         offset_list.push(current_offset);
-        current_offset += banner_width;
+        current_offset += this.width;
     }
 
     return offset_list;
