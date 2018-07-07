@@ -37,44 +37,51 @@ RotativeBanner.prototype = {
         
     },
 
-    generateBannerImageOffsets: function(array) {
-        // This function loops through an array and for
-        // each item of the array, adds the banner width
+    generateBannerImageOffsets: function() {
+        // This function loops through the RotativeBanner.image.list 
+        // and for each item of the array, adds the banner width
         // to the list that is going to be returned.
         // The starting offset is -(this.width), because
         // the current rotating image is going to hide to
         // the banner's left.
         
+        var image_list = this.image.list;
         var offset_list = [];
         var current_offset = -this.width;
     
-        for (var image = 0; image < array.length; image++) {
+        for (var image = 0; image < image_list.length; image++) {
             offset_list.push(current_offset);
             current_offset += this.width;
         }
-        
+
         this.offset_list = offset_list;
         
         return this.offset_list;
 
     },
 
-    setOffset: function() {
+    setOffset: function(image_list) {
 
         for (var index = 0; index < image_list.length; index++) {
             
             var current_image = image_list[index];
-            var current_offset = offset_list[index];
-            current_image.style.right = current_offset + banner.image.image_unit;
+            var current_offset = this.offset_list[index];
+            current_image.style.right = current_offset + this.image.image_unit;
     
         }
 
     },
 
-    rotateBanner: function(array) {
-    
-        image_list = fistToLastIndex(array);
-        setOffset(image_list, offset_list);
+    rotateBanner: function() {
+        self = this;
+        this.getBannerImageList();
+        this.generateBannerImageOffsets();
+
+        setInterval(function() {
+            console.log(self)
+            image_list = self.fistToLastIndex(self.image.list);
+            self.setOffset(image_list);
+        }, this.rotation_time);
     
     }
 
