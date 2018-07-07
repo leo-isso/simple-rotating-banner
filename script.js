@@ -19,6 +19,13 @@ var banner_height = document.getElementById(banner.id).offsetHeight;
 // Transform a HTMLCollction to an Array
 var banner_image_list = Array.prototype.slice.call(document.getElementsByClassName(banner.image.class_name));
 
+// Images Offset List
+var offset_list = generateBannerImageOffsets(banner_image_list, banner_width);
+
+
+var banner_interval = setInterval(function() {
+    rotateBanner(banner_image_list);
+}, banner_timer);
 
 function fistToLastIndex(array) {
     // This function takes the first item from an array
@@ -50,10 +57,7 @@ function generateBannerImageOffsets(array, banner_width) {
     return offset_list;
 }
 
-function setStartingOffset() {
-
-    var image_list = banner_image_list;
-    var offset_list = generateBannerImageOffsets(banner_image_list, banner_width);
+function setOffset(image_list, offset_list) {
 
     for (var index = 0; index < image_list.length; index++) {
         
@@ -65,9 +69,15 @@ function setStartingOffset() {
 
 }
 
+function rotateBanner(array) {
+    
+    image_list = fistToLastIndex(array);
+    setOffset(image_list, offset_list);
+
+}
+
 /**
  * OLD BANNER
- */
 window.onload = function() {
     bannerLoop();
 };
@@ -155,3 +165,5 @@ function bannerLoop() {
     }
 
 }
+
+ */
